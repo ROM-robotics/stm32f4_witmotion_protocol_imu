@@ -50,7 +50,7 @@ void MX_USART3_UART_Init(void);
 // ROM DYNAMICS ADD
 void Usart1Init(unsigned int uiBaud);
 
-void Usart2Init(unsigned int uiBaud);
+void Usart၂Init(unsigned int uiBaud);
 void Uart2Send(unsigned char *p_data, unsigned int uiSize);
 // ROM DYNAMICS END
 

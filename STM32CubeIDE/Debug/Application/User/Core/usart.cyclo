@@ -1,0 +1,12 @@
+C:/Users/User/Desktop/f4_wit/Core/Src/usart.c:33:6:MX_USART1_UART_Init	1
+C:/Users/User/Desktop/f4_wit/Core/Src/usart.c:34:6:Usart1Init	2
+C:/Users/User/Desktop/f4_wit/Core/Src/usart.c:63:6:MX_USART2_UART_Init	1
+C:/Users/User/Desktop/f4_wit/Core/Src/usart.c:64:6:Usart၂Init	2
+C:/Users/User/Desktop/f4_wit/Core/Src/usart.c:93:6:MX_USART3_UART_Init	2
+C:/Users/User/Desktop/f4_wit/Core/Src/usart.c:121:6:HAL_UART_MspInit	4
+C:/Users/User/Desktop/f4_wit/Core/Src/usart.c:208:6:HAL_UART_MspDeInit	4
+C:/Users/User/Desktop/f4_wit/Core/Src/usart.c:275:10:USART_ReceiveData	1
+C:/Users/User/Desktop/f4_wit/Core/Src/usart.c:286:6:USART1_IRQHandler	2
+C:/Users/User/Desktop/f4_wit/Core/Src/usart.c:302:6:USART_SendData	1
+C:/Users/User/Desktop/f4_wit/Core/Src/usart.c:311:6:USART2_IRQHandler	2
+C:/Users/User/Desktop/f4_wit/Core/Src/usart.c:323:6:Uart2Send	4

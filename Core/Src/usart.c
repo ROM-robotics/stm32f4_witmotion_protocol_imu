@@ -19,7 +19,6 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "usart.h"
-#include "wit_c_sdk.h"
 
 /* USER CODE BEGIN 0 */
 //#include "wit_c_sdk.h"
@@ -31,7 +30,7 @@ UART_HandleTypeDef huart3;
 
 /* USART1 init function */
 
-//void MX_USART1_UART_Init(void)
+void MX_USART1_UART_Init(void){}
 void Usart1Init(unsigned int uiBaud)
 {
 
@@ -43,7 +42,7 @@ void Usart1Init(unsigned int uiBaud)
 
   /* USER CODE END USART1_Init 1 */
   huart1.Instance = USART1;
-  huart1.Init.BaudRate = 115200;
+  huart1.Init.BaudRate = uiBaud;
   huart1.Init.WordLength = UART_WORDLENGTH_8B;
   huart1.Init.StopBits = UART_STOPBITS_1;
   huart1.Init.Parity = UART_PARITY_NONE;
@@ -61,8 +60,8 @@ void Usart1Init(unsigned int uiBaud)
 }
 /* USART2 init function */
 
-//void MX_USART2_UART_Init(void)
-void Usart2Init(unsigned int uiBaud)
+void MX_USART2_UART_Init(void){}
+void Usart၂Init(unsigned int uiBaud)
 {
 
   /* USER CODE BEGIN USART2_Init 0 */
@@ -73,7 +72,7 @@ void Usart2Init(unsigned int uiBaud)
 
   /* USER CODE END USART2_Init 1 */
   huart2.Instance = USART2;
-  huart2.Init.BaudRate = 115200;
+  huart2.Init.BaudRate = uiBaud;
   huart2.Init.WordLength = UART_WORDLENGTH_8B;
   huart2.Init.StopBits = UART_STOPBITS_1;
   huart2.Init.Parity = UART_PARITY_NONE;

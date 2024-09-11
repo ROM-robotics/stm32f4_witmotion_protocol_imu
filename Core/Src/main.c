@@ -27,6 +27,8 @@
 /* USER CODE BEGIN Includes */
 #include "delay.h"
 #include "wit_c_sdk.h"
+#include <string.h>
+#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -120,7 +122,7 @@ int main(void)
 	int i;
 	SysTick_Init();
 	Usart1Init(921600);
-	Usart2Init(921600);
+	Usart၂Init(921600);
 	WitInit(WIT_PROTOCOL_NORMAL, 0x50);
 	WitSerialWriteRegister(SensorUartSend);
 	WitRegisterCallBack(SensorDataUpdata);
@@ -134,37 +136,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-		CmdProcess();
-		CopeWitData(ucRegIndex,usRegDataBuff,uiRegDataLen);
-		if(s_cDataUpdate1 || s_cDataUpdate2 ||s_cDataUpdate3 ||s_cDataUpdate4 )
-		{
-			for(i = 0; i < 3; i++)
-			{
-				fAcc[i] = sReg[AX+i] / 32768.0f * 16.0f;
-				fGyro[i] = sReg[GX+i] / 32768.0f * 2000.0f;
-				fAngle[i] = sReg[Roll+i] / 32768.0f * 180.0f;
-			}
-			if(s_cDataUpdate1 | ACC_UPDATE)
-			{
-				printf("acc:%.3f %.3f %.3f\r\n", fAcc[0], fAcc[1], fAcc[2]);
-				s_cDataUpdate1 &= ~ACC_UPDATE;
-			}
-			if(s_cDataUpdate2 | GYRO_UPDATE)
-			{
-				printf("gyro:%.3f %.3f %.3f\r\n", fGyro[0], fGyro[1], fGyro[2]);
-				s_cDataUpdate2 &= ~GYRO_UPDATE;
-			}
-			if(s_cDataUpdate3 | ANGLE_UPDATE)
-			{
-				printf("angle:%.3f %.3f %.3f\r\n", fAngle[0], fAngle[1], fAngle[2]);
-				s_cDataUpdate3 &= ~ANGLE_UPDATE;
-			}
-			if(s_cDataUpdate4 | MAG_UPDATE)
-			{
-				printf("mag:%d %d %d\r\n", sReg[HX], sReg[HY], sReg[HZ]);
-				s_cDataUpdate4 &= ~MAG_UPDATE;
-			}
-		}
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -289,13 +261,13 @@ static void CmdProcess(void)
 			if(WitSetUartBaud(WIT_BAUD_115200) != WIT_HAL_OK) 
 				printf("\r\nSet Baud Error\r\n");
 			else 
-				Usart2Init(c_uiBaud[WIT_BAUD_115200]);											
+				Usart၂Init(c_uiBaud[WIT_BAUD_115200]);
 			break;
 		case 'b':	
 			if(WitSetUartBaud(WIT_BAUD_9600) != WIT_HAL_OK)
 				printf("\r\nSet Baud Error\r\n");
 			else 
-				Usart2Init(c_uiBaud[WIT_BAUD_9600]);												
+				Usart၂Init(c_uiBaud[WIT_BAUD_9600]);
 			break;
 		case 'R':	
 			if(WitSetOutputRate(RRATE_10HZ) != WIT_HAL_OK) 
@@ -371,7 +343,7 @@ static void AutoScanSensor(void)
 	
 	for(i = 1; i < 10; i++)
 	{
-		Usart2Init(c_uiBaud[i]);
+		Usart၂Init(c_uiBaud[i]);
 		iRetry = 2;
 		do
 		{
@@ -380,7 +352,7 @@ static void AutoScanSensor(void)
 			delay_ms(100);
 			if(s_cDataUpdate1 != 0)
 			{
-				printf("%d baud find sensor\r\n\r\n", c_uiBaud[i]);
+				printf("%ld baud find sensor\r\n\r\n", c_uiBaud[i]);
 				ShowHelp();
 				return ;
 			}
